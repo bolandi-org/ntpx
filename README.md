@@ -4,6 +4,20 @@
 
 ---
 
+## دانلود آخرین نسخه (برای سرور خارج یا لوکال)
+
+اگر به اینترنت آزاد دسترسی دارید، می‌توانید مستقیماً آخرین نسخه باینری را از گیت‌هاب دانلود کنید:
+
+```bash
+# دانلود آخرین باینری برای لینوکس (AMD64)
+export REPO="bolandi-org/ntpx"
+export LATEST_URL=$(curl -s https://api.github.com/repos/$REPO/releases/latest | grep "browser_download_url.*nptx_core_linux_amd64" | cut -d '"' -f 4)
+wget -O nptx_core_linux_amd64 "$LATEST_URL"
+chmod +x nptx_core_linux_amd64
+```
+
+---
+
 ## نصب کاملاً آفلاین (بدون نیاز به اینترنت و دانلود)
 
 برای سرورهای ایران که دسترسی به اینترنت آزاد ندارند، فایل اجرایی `nptx_core_linux_amd64` (که از بخش Releases گیت‌هاب دانلود کرده‌اید) و فایل‌های `nptx.service` و `config.json` را در یک پوشه روی سرور قرار دهید.
