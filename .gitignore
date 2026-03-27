@@ -1,0 +1,24 @@
+# Build outputs and binaries
+build/
+bin/
+nptx_bin
+nptx_core_linux_amd64
+*.exe
+*.out
+*.app
+
+# Agent frameworks
+.agent/
+.agents/
+_agent/
+_agents/
+
+# IDE and OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*~
+
+# Logs
+*.log
