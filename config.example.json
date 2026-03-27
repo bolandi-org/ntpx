@@ -1,0 +1,8 @@
+{
+    "mode": "server",
+    "local": "0.0.0.0:123",
+    "remote": "",
+    "streams": 16,
+    "password": "your-secure-password-here",
+    "routes": ""
+}
