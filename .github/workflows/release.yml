@@ -1,0 +1,36 @@
+name: Build and Release nptx
+
+on:
+  push:
+    tags:
+      - 'v*' # Trigger automatically when you push a tag like "v1.0.0"
+  workflow_dispatch: # Allows manual trigger from the GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Linux amd64
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+          check-latest: true
+
+      - name: Build Binary
+        run: |
+          make build-linux
+          mv build/nptx_core_linux_amd64 ./nptx_core_linux_amd64
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: nptx_core_linux_amd64
+          generate_release_notes: true
